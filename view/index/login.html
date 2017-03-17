@@ -64,6 +64,7 @@
                     // object -> String js对象转字符串储存
                     var loginInfo = JSON.stringify(data.result);
                     // cookie 本地储存loginInfo字符串(用户信息)
+                    // 实现cookie数据的跨页面共享
                     $.cookie('loginInfo', loginInfo, {path: '/'});
 
                     // 2. 跳转页面

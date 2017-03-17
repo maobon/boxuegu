@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03-pm</title>
+</head>
+<body>
+<script>
+    /**
+     * 后台技术 URL重写
+     * url重写可以解决用户禁用cookie的情况下依然可以保持客户端和服务器的通信状态
+     * 每次url中带上参数 就算用户的浏览器禁用cookie功能 也可以保持该机制
+     *
+     * 如何操作cookie??
+     * js中 通过document.cookie的方式可以访问cookie
+     * cookie的格式是键值对
+     * 多个属性之间通过分号和空格隔开
+     *
+     * ++ cookie的性质 ++
+     * cookie和路径有关 http://abc.html 在index中无法获取到
+     * 在子路径设置的cookie 在父路径下是获取不到的 反过来是可以的
+     * 在父路径下设置的cookie在子路径下是可以获取到的 还有是无法跨域获取cookie
+     *
+     * cookie的分类:
+     * 1. session cookie    会话cookie 只在浏览器请求的过程中有效 临时的 浏览器关了就没了
+     * 2. persistant cookie 持久cookie
+     *
+     * 持久cookie的设置
+     * 设置过期时间的字符串 有格式要求
+     *
+     * ++ jquery插件 jquery-cookie
+     * 有个封装好的操作cookie的方法
+     */
+
+    // var date = new Date();
+    // date.setDate(date.getDate() + 5); // 17号 + 5天
+    // document.cookie = 'username=zhangsan; expires=' + date.toGMTString();
+
+    // 直接这么写会追加到cookie中 不会覆盖;
+    document.cookie = 'age=13';
+    document.cookie = 'gender=male';
+
+</script>
+</body>
+</html>

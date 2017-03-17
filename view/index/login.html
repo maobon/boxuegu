@@ -3,37 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <link rel="stylesheet" href="../../public/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../public/assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="../../public/assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="../../public/less/index.css">
+    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
+    <link rel="stylesheet" href="/public/less/index.css">
 </head>
 <body>
-    <!-- 登录 -->
-    <div class="login">
-        <div class="login-wrap">
-            <div class="avatar">
-                <img src="../../uploads/monkey.png" class="img-circle" alt="">
-            </div>
-            <form action="" class="col-xs-offset-1 col-xs-10">
-                <div class="input-group input-group-lg">
+<!-- 登录 -->
+<div class="login">
+    <div class="login-wrap">
+        <!-- avatar -->
+        <div class="avatar">
+            <img src="./uploads/dajiba.jpg" class="img-circle" alt="">
+        </div>
+
+        <!-- login form -->
+        <form id="loginForm" class="col-xs-offset-1 col-xs-10">
+            <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-user"></i>
                     </span>
-                    <input type="text" class="form-control" placeholder="用户名">
-                </div>
-                <div class="input-group input-group-lg">
+                <!--用户名 tc_name-->
+                <input type="text" class="form-control" placeholder="用户名" name="tc_name">
+            </div>
+
+            <div class="input-group input-group-lg">
                     <span class="input-group-addon">
                         <i class="fa fa-key"></i>
                     </span>
-                    <input type="password" class="form-control" placeholder="密码">
-                </div>
-                <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
-            </form>
-        </div>
+                <!--密码 tc_pass-->
+                <input type="password" class="form-control" placeholder="密码" name="tc_pass">
+            </div>
+            <!--button[type='submit']-->
+            <button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
+        </form>
     </div>
-    
-    <script src="../../public/assets/jquery/jquery.min.js"></script>
-    <script src="../../public/assets/bootstrap/js/bootstrap.min.js"></script>
+</div>
+
+<script src="/public/assets/jquery/jquery.min.js"></script>
+<script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
+<script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#loginForm").submit(function () {
+
+        // 序列化表单输入项 username=admin&pass=123456;
+        var formData = $(this).serialize();
+
+        // ajax 发送POST请求
+        $.ajax({
+            type: 'post',
+            url: '/api/login', // /api 配置在服务端的反向代理
+            data: formData,
+            dataType: 'json', // 设置返回数据类型
+            success: function (data) {
+
+                // data.code == 200 登录成功
+                if (data.code == 200) {
+
+                    // 1. cookie储存登录成功后 用户的信息
+                    // object -> String js对象转字符串储存
+                    var loginInfo = JSON.stringify(data.result);
+                    // cookie 本地储存loginInfo字符串(用户信息)
+                    $.cookie('loginInfo', loginInfo, {path: '/'});
+
+                    // 2. 跳转页面
+                    // 跳转页面到首页 index.html
+                    location.href = '/index/index';
+
+                    // location.href = '/teacher/teacher_list'
+                    // location.href = '/test/demo';
+                }
+            },
+            error: function (data) {
+                console.log(data.responseText);
+            }
+        });
+
+        // return false; 阻止表单默认提交事件
+        return false;
+    });
+</script>
 </body>
 </html>

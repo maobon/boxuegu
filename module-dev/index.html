@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>requirejs测试</title>
+
+    <script src="require.js" data-main="./js/main1"></script>
+    <script>
+        /**
+         * 页面中只加载一个入口点就可以了
+         * requirejs自动维护模块间的调用顺序以及加载顺序
+         * 维护一个树状的结构
+         *
+         * 1. 解决了命名冲突(不同模块中的同名比那辆不会发生冲突)
+         * 2. 解决了js模块间相互依赖的关系
+         *
+         * 路径问题 1
+         * requirejs中指定了 data-main属性
+         * 下面单独require的模块路径 统一从data-main中js文件的路径作为起始点
+         * 日后所有模块的路径使用相对路径
+         *
+         * requirejs 中的两种引入模块的方式
+         * 1. 设置过data-main属性
+         * 2. 使用require放大引入
+         * * 可以手动配置baseUrl属性
+         */
+    </script>
+
+    <script>
+        // 路径问题 2
+        // 手动指定默认根路径
+        require.config({
+            baseUrl: './js/'
+        });
+
+        // 加载一个模块
+        require(['m1']);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

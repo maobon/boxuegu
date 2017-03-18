@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-模块化开发</title>
+</head>
+<body>
+<script>
+    /**
+     * 模块化规范:
+     * 浏览器的规范: (客户端)
+     * AMD --> requirejs (国外的公司设计) (本次学习内容)
+     * CMD --> seajs (阿里巴巴)
+     *
+     * 服务端的规范: (服务器端)
+     * commonjs --> nodejs (NodeJS) nodejs中的模块化规范 与 浏览器端大体相同 只是js文件加载部分不同
+     *
+     * ++ 客户端与浏览器端有着显著的区别 ++
+     * 浏览器请求加载js文件, 核心就是按照顺序异步加载远端js,不会阻塞页面
+     * requirejs 和 seajs 的核心功能按照顺序异步加载远端js文件...
+     * 服务器端因为没有加载远端js文件的耗时操作,直接加载磁盘中的js文件即可
+     *
+     * 非模块开发存在的两个主要问题:
+     * 1. 命名冲突
+     * 2. 文件依赖
+     */
+</script>
+</body>
+</html>

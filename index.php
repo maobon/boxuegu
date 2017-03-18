@@ -1,35 +1,33 @@
-<?php
-// index.php 控制分发
-$path = 'index';
-$filename = 'index';
+<?php 
+    // 改文件复制路径的分发
+    // 表示路径
+    $path = 'index';
 
-if(array_key_exists('PATH_INFO',$_SERVER)){
+    // 文件名称
+    $filename = 'index';
 
-    // 获取url中的路径
-	$pathinfo = $_SERVER['PATH_INFO'];
-	$pathinfo = explode('/', substr($pathinfo, 1));
-
-    // 去掉路径中的第一个字符(/)
-	if(count($pathinfo) == 2) {
-		$path = $pathinfo[0];
-		$filename = $pathinfo[1];
-
-	} else {
-        // 表示登录页面
-        if($pathinfo[0] == 'favicon.ico'){
-           header(200);
-           header('Content-Type','image/x-icon');
-           include './public/images/favicon.ico';
-           exit;
+    // 判断路径是否存在
+    if(array_key_exists('PATH_INFO',$_SERVER)){
+        // 获取url中的路径
+        $url = $_SERVER['PATH_INFO'];
+        // 去掉路径中的第一个字符（/）
+        $str = substr($url, 1);
+        // 将字符串按照/进行分割
+        $arr = explode('/',$str);
+        if(count($arr) == 2){
+            $path = $arr[0];
+            $filename = $arr[1];
+        }else{
+            // $filename = 'login';
+            $filename = '../test/demo';
         }
-        $filename = 'login';
+
+    }else{
+        // 表示登录页面
+        // $filename = 'login';
+           $filename = '../test/demo';
     }
 
-} else {
-    $filename = 'login';
-}
-
-// php的include 作用就是载入一个页面
-include './view/' . $path . '/' . $filename . '.html';
-
+    // 作用就是载入一个页面
+    include('./view/'.$path.'/'.$filename.'.html');
 ?>

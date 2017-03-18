@@ -73,4 +73,23 @@ define(['jquery', 'cookie'], function ($) {
     // console.log(obj);
     $(".aside .profile .avatar img").attr('src', obj.tc_avatar);
     $(".aside .profile h4").html(obj.tc_name);
+
+    /**
+     * 点击退出登录
+     * 发送退出请求 请求成功后
+     * 服务端返回相应 在responseHeader中 设置PHPSESSID = "delete" 删除浏览器cookie中的PHPSESSID
+     */
+    $("#btnLogout").click(function () {
+        $.ajax({
+            type: 'post',
+            url: '/api/logout',
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 200) {
+                    location.href = "/login";
+                }
+            }
+        });
+    });
+
 });

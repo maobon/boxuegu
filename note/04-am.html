@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04-am</title>
+</head>
+<body>
+<script>
+    /**
+     * 代理:
+     * 正向代理 代理客户端上网 发送请求
+     * 反向代理 代理服务器端 接收大量客户端的请求 堡垒机
+     *
+     * 反向代理的目的:
+     * 1. 提高安全性 在服务器前面的一个盾牌 防火墙 堡垒机 客户端只有权限请求前面的代理服务器
+     * 2. 大量服务器前面 应付大并发情况下的负载均衡 平衡后面服务器集群的请求流量均衡
+     *
+     * DNS:
+     * DNS domain name service 负责域名和ip地址的映射关系
+     * 多个域名可以绑定同一个ip地址 DNS简单理解就是两列的表 域名和ip的对应关系 类似hosts文件
+     * 域名解析的规则: www.baidu.com --> 本机host文件 --> 公网DNS服务器
+     *
+     * 前端有多少种方式可以发送请求??
+     * 1.浏览器地址栏直接输入url
+     * 2.表单的action属性
+     * 3.a标签的href属性
+     * 4.img的src属性
+     * 5.script的src属性
+     * 6.link标签的href属性
+     * 7.iframe的src属性
+     * 8.Ajax发送请求
+     * 9.postMessage h5的API
+     * 10. flash插件也可以
+     * 11. location的href属性
+     *
+     * URL的规范格式
+     * scheme://host:port/path?query#fragment
+     *
+     * scheme 协议 http https file ftp ssh...
+     * host 表示域名或者ip地址
+     * port 端口 确定访问的是该计算机上的那个网络应用程序
+     * path 域名之后 ?之前的内容 xxx/xxx/xxx/
+     * query 查询字符串,用于向服务端传参 key=value&key=value
+     * fragment hash 锚点 可以用来定位一个很长的页面上的具体某一个位置
+     *
+     * 跨域的问题:
+     * 1. 跨域解决方案 JSONP
+     *
+     * 2. CORS 纯后端配置 跨域资源共享
+     * 3. 反向代理
+     * 4. flash插件或者别的浏览器中安装的插件..
+     *
+     * cookie 和 session
+     * 有了以后 所有同域下的页面的所有请求 请求头里面都带有cookie
+     * 自动第一次去了超时以后 给你发个小票 这样以后再去的时候 始终带着小票
+     * 超市就知道你之前来过了...
+     *
+     * SESSIONID 也一样 去了超市给个凭证 然后下回默认再来超时 不管去哪里都带着这些cookie
+     * 包括里面的SESSIONID的值 服务端记录该浏览器访问的状态 还分会话cookie 和持久cookie
+     * SESSION机制 依托cookie机制 只不过是考虑安全问题 将具体数据储存在服务器端 浏览器端只有一个编号 SESSID 每次请求都带着
+     * PHPSESSID JSESSID ... SESSIONID 名字不确定
+     *
+     * 前端具体不会对SESSION进行操作 前端了解对cookie的操作就可以了
+     */
+</script>
+</body>
+</html>

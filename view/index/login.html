@@ -40,46 +40,5 @@
 
 <?php include('./view/common/script.html') ?>
 
-<script>
-    $("#loginForm").submit(function () {
-
-        // 序列化表单输入项 username=admin&pass=123456;
-        var formData = $(this).serialize();
-
-        // ajax 发送POST请求
-        $.ajax({
-            type: 'post',
-            url: '/api/login', // /api 配置在服务端的反向代理
-            data: formData,
-            dataType: 'json', // 设置返回数据类型
-            success: function (data) {
-
-                // data.code == 200 登录成功
-                if (data.code == 200) {
-
-                    // 1. cookie储存登录成功后 用户的信息
-                    // object -> String js对象转字符串储存
-                    var loginInfo = JSON.stringify(data.result);
-                    // cookie 本地储存loginInfo字符串(用户信息)
-                    // 实现cookie数据的跨页面共享
-                    $.cookie('loginInfo', loginInfo, {path: '/'});
-
-                    // 2. 跳转页面
-                    // 跳转页面到首页 index.html
-                    location.href = '/index/index';
-
-                    // location.href = '/teacher/teacher_list'
-                    // location.href = '/test/demo';
-                }
-            },
-            error: function (data) {
-                console.log(data.responseText);
-            }
-        });
-
-        // return false; 阻止表单默认提交事件
-        return false;
-    });
-</script>
 </body>
 </html>

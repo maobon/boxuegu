@@ -18,14 +18,14 @@
             $path = $arr[0];
             $filename = $arr[1];
         }else{
-            // $filename = 'login';
-            $filename = '../test/demo';
+            $filename = 'login';
+            // $filename = '../test/demo';
         }
 
     }else{
         // 表示登录页面
-        // $filename = 'login';
-           $filename = '../test/demo';
+        $filename = 'login';
+        // $filename = '../test/demo';
     }
 
     // 作用就是载入一个页面

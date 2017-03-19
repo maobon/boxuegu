@@ -3,27 +3,32 @@
     <div class="profile">
 
     </div>
-    <!-- 导航菜单 -->
+
+    <!-- 导航菜单 a.href=xxx 根路径是view文件夹下 目标路径从后面开始写起 -->
     <div class="navs">
         <ul class="list-unstyled">
+            <!-- 仪表盘 tab -->
             <li>
-                <a href="./view/index/index" class="active">
+                <a href="/index/index" class="active">
                     <i class="fa fa-home"></i>
                     仪表盘
                 </a>
             </li>
+            <!-- 讲师管理 tab -->
             <li>
-                <a href="./view/user/user_list">
-                    <i class="fa fa-bell"></i>
-                    用户管理
-                </a>
-            </li>
-            <li>
-                <a href="./view/teacher/teacher_list">
+                <a href="/teacher/teacher_list">
                     <i class="fa fa-bell"></i>
                     讲师管理
                 </a>
             </li>
+            <!-- 用户管理 tab -->
+            <li>
+                <a href="/user/user_list">
+                    <i class="fa fa-bell"></i>
+                    用户管理
+                </a>
+            </li>
+            <!-- 课程管理 tab -->
             <li>
                 <a href="javascript:">
                     <i class="fa fa-cog"></i>
@@ -31,13 +36,15 @@
                     <i class="arrow fa fa-angle-right"></i>
                 </a>
                 <ul class="list-unstyled">
+                    <!-- 课程添加 tab -->
                     <li>
-                        <a href="./view/course/course_add">
+                        <a href="/course/course_add">
                             课程添加
                         </a>
                     </li>
+                    <!-- 课程列表 tab -->
                     <li>
-                        <a href="./view/course/course_list">
+                        <a href="/course/course_list">
                             课程列表
                         </a>
                     </li>

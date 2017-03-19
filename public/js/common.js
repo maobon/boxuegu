@@ -1,7 +1,7 @@
 /**
  * 使用requirejs 构建common模块
  */
-define(['jquery', 'cookie'], function ($) {
+define(['jquery', 'template', 'cookie'], function ($, template) {
 
     /**
      * 控制左侧导航菜单的显示和隐藏
@@ -69,10 +69,9 @@ define(['jquery', 'cookie'], function ($) {
      *
      * jQuery-cookie插件 读取cookie -> $.cookie('attrKey');
      */
-    var obj = JSON.parse($.cookie('loginInfo'));
-    // console.log(obj);
-    $(".aside .profile .avatar img").attr('src', obj.tc_avatar);
-    $(".aside .profile h4").html(obj.tc_name);
+    // var obj = JSON.parse($.cookie('loginInfo'));
+    // $(".aside .profile .avatar img").attr('src', obj.tc_avatar);
+    // $(".aside .profile h4").html(obj.tc_name);
 
     /**
      * 点击退出登录
@@ -91,5 +90,26 @@ define(['jquery', 'cookie'], function ($) {
             }
         });
     });
+
+    // 使用模板引擎
+    <!-- 个人资料 -->
+    // <div class="profile">
+    //     <!-- 头像 -->
+    //     <div class="avatar img-circle">
+    //          <img src="./uploads/avatar.jpg">
+    //     </div>
+    //     <h4>布头儿</h4>
+    // </div>
+
+    var obj = JSON.parse($.cookie('loginInfo'));
+    var tpl =
+        '<div class="avatar img-circle">' +
+        '<img src="{{tc_avatar}}">' +
+        '</div>' +
+        '<h4>{{tc_name}}</h4>';
+
+    var render = template.compile(tpl);
+    var html = render(obj);
+    $(".aside .profile").html(html);
 
 });

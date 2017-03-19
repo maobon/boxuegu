@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-index</title>
+    <script src="./assets/requirejs/require.js"></script>
+    <script>
+        require.config({
+            baseUrl: './assets',
+            paths: {
+                jquery: 'jquery/jquery',
+                template: 'artTemplate/template',
+                abc: '../abc' // 一个非标准的模块
+            },
+            shim: {
+                exports: 'obj'
+            }
+
+        })
+    </script>
+
+    <script>
+        // 1. 此处的路径 不受到config中baseUrl的设置
+        // 2. 设置过data-main入口后会受到影响
+        // require() 模块中的路径不能省略
+        require(['./main.js', 'abc'], function (data, abc) {
+
+            abc.showInfo();
+            abc.showMessage();
+        });
+    </script>
+
+    <script type="application/template" id="tpl">
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

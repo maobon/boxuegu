@@ -91,16 +91,11 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
         });
     });
 
-    // 使用模板引擎
-    <!-- 个人资料 -->
-    // <div class="profile">
-    //     <!-- 头像 -->
-    //     <div class="avatar img-circle">
-    //          <img src="./uploads/avatar.jpg">
-    //     </div>
-    //     <h4>布头儿</h4>
-    // </div>
 
+    /**
+     * 用户登录成功 从cookie中获取已登录用户的信息
+     * 使用模板引擎渲染到页面
+     */
     var obj = JSON.parse($.cookie('loginInfo'));
     var tpl =
         '<div class="avatar img-circle">' +

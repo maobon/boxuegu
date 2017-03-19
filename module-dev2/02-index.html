@@ -6,7 +6,8 @@
     <script src="./assets/requirejs/require.js"></script>
     <script>
         require.config({
-            baseUrl: './assets',
+            baseUrl: './assets', // 此处会影响所有
+
             paths: {
                 jquery: 'jquery/jquery',
                 template: 'artTemplate/template',
@@ -20,10 +21,12 @@
     </script>
 
     <script>
-        // 1. 此处的路径 不受到config中baseUrl的设置
+        // ++ config中 baseUrl会影响到左右文件的路径 ++
+        // 1. 此处的路径 到config中baseUrl的设置
         // 2. 设置过data-main入口后会受到影响
-        // require() 模块中的路径不能省略
-        require(['./main.js', 'abc'], function (data, abc) {
+
+        // require() ** 模块中的路径后面的.js 可以省略 **
+        require(['../main', 'abc'], function (data, abc) {
 
             abc.showInfo();
             abc.showMessage();

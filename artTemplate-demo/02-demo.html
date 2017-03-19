@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-demo</title>
+</head>
+
+
+<script type="text/template">
+    <ul>
+        {{ each list as item index}}
+        <li><span>{{i}}</span>{{ item.name }}<span>{{item.number}}</span></li>
+        {{ /each }}
+        <h1>{{ item.info }}</h1>
+    </ul>
+</script>
+
+<script>
+    // each 循环 遍历
+    // list object的key
+    // as 作为
+    // item 数据中的一项
+
+    require(['jquery', 'template'], function ($, template) {
+
+        var data = {
+            status: "1",
+            list: [
+                {name: "apple"},
+                {name: "banana"}
+            ],
+            info: {
+                title: "水果"
+            }
+        };
+
+    });
+</script>
+<body>
+
+</body>
+</html>

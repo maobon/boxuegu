@@ -119,9 +119,9 @@
             <!--查看教师详细信息-->
             <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
             <!--编辑-->
-            <a href="javascript:;" class="btn btn-info btn-xs">编 辑</a>
+            <a href="javascript:" class="btn btn-info btn-xs">编 辑</a>
             <!--注销-->
-            <a href="javascript:;" class="btn btn-warning btn-xs">注 销</a>
+            <a href="javascript:" class="btn btn-warning btn-xs">注 销</a>
         </td>
     </tr>
     {{/each}}
@@ -200,7 +200,8 @@
     <tr>
         <td colspan="7">
             <div class="introduce">
-                <p>{{tc_introduce}}</p>
+                <!-- # 解析数据中的HTML标签 -->
+                <p>{{#tc_introduce}}</p>
             </div>
         </td>
     </tr>

@@ -61,17 +61,6 @@ define(['jquery', 'template', 'cookie'], function ($, template) {
         return false;
     });
 
-    // BUG 写在最后 并不能保证可以获取到cookie 首次访问该网站的时候 cookie是空的
-    /**
-     * 读取cookie中的用户信息 设置到页面上
-     * tc_avatar 用户头像
-     * tc_name 用户名
-     *
-     * jQuery-cookie插件 读取cookie -> $.cookie('attrKey');
-     */
-    // var obj = JSON.parse($.cookie('loginInfo'));
-    // $(".aside .profile .avatar img").attr('src', obj.tc_avatar);
-    // $(".aside .profile h4").html(obj.tc_name);
 
     /**
      * 点击退出登录

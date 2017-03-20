@@ -3,9 +3,15 @@
  * 查询教师列表
  * 使用jquery发送ajax请求 对数据使用模板引擎渲染生成html 填充页面
  * 功能点: 1.查看 2.编辑 3.注销
+ *
+ * 加载顺序 jquery -> template -> utils -> bootstrap
+ * 需要utils模块在 bootstrap之前加载
  */
 
-define(['jquery', 'template', 'bootstrap'], function ($, template) {
+define(['jquery', 'template', 'utils', 'bootstrap'], function ($, template, utils) {
+
+    // 设置当前选中item的背景
+    utils.setMenuItemSelected(location.pathname);
 
     $.ajax({
         type: 'get',

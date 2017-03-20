@@ -1,9 +1,15 @@
 /**
  * Created by xinbob on 3/19/17.
  * Baidu echarts 模块
+ *
+ * 需要jquery在utils之前加载
  */
 
-define(['echarts'], function (echarts) {
+define(['echarts', 'jquery', 'utils'], function (echarts, $, utils) {
+
+    // 设置当前选中item的背景
+    utils.setMenuItemSelected(location.pathname);
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 

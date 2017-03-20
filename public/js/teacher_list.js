@@ -77,9 +77,9 @@ define(['jquery', 'template', 'utils', 'bootstrap', 'overlay'], function ($, tem
                         if (data.code == 200) {
 
                             if (data.result.tc_status == 0) {
-                                $(_this).html("启 用");
-                            } else if (data.result.tc_status == 1) {
                                 $(_this).html("注 销");
+                            } else if (data.result.tc_status == 1) {
+                                $(_this).html("启 用");
                             }
 
                             td.attr('data-tcstatus', data.result.tc_status);

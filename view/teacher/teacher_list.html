@@ -91,7 +91,7 @@
     </div>
 </div>
 
-<!--teacher list data template-->
+<!-- 讲师列表 模板 -->
 <!-- artTemplate 模板引擎的使用 简洁语法 -->
 <!-- each代表遍历 {}的key as作为 item{key:[]} 数组中的一项{} index是当前索引 -->
 <!-- {{each list as item index}}-->
@@ -115,13 +115,20 @@
         <td>{{item.tc_cellphone}}</td>
 
         <!-- teachers opration -->
-        <td class="teacherOperation" data-tcid="{{item.tc_id}}">
+        <!-- td标签中使用 data- 自定义属性 保存一些信息 -->
+        <td class="teacherOperation" data-tcid="{{item.tc_id}}" data-tcstatus={{item.tc_status}}>
             <!--查看教师详细信息-->
             <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
             <!--编辑-->
             <a href="javascript:" class="btn btn-info btn-xs">编 辑</a>
             <!--注销-->
-            <a href="javascript:" class="btn btn-warning btn-xs">注 销</a>
+            <a href="javascript:" class="btn btn-warning btn-xs">
+                {{if item.tc_status == 0}}
+                启 用
+                {{else}}
+                注 销
+                {{/if}}
+            </a>
         </td>
     </tr>
     {{/each}}
@@ -148,7 +155,7 @@
     </div>
 </div>
 
-<!--teacher detail info template-->
+<!-- 讲师详情 模板 -->
 <script type="text/template" id="teacherDetailInfoTpl">
     <tr>
         <th>姓名:</th>

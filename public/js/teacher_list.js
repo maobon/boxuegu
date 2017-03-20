@@ -8,7 +8,7 @@
  * 需要utils模块在 bootstrap之前加载
  */
 
-define(['jquery', 'template', 'utils', 'bootstrap'], function ($, template, utils) {
+define(['jquery', 'template', 'utils', 'bootstrap', 'overlay'], function ($, template, utils) {
 
     // 设置当前选中item的背景
     utils.setMenuItemSelected(location.pathname);

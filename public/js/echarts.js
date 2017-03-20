@@ -5,7 +5,7 @@
  * 需要jquery在utils之前加载
  */
 
-define(['echarts', 'jquery', 'utils'], function (echarts, $, utils) {
+define(['echarts', 'jquery', 'utils', 'overlay'], function (echarts, $, utils) {
 
     // 设置当前选中item的背景
     utils.setMenuItemSelected(location.pathname);

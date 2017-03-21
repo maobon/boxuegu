@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../../jquery.js"></script>
+    <script type="text/javascript" src="./jquery.region.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $('.hometown').region({
+            url : './region.json'
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="hometown">
+        <select id="p" data-id="130000">
+            <option>请选择省</option>
+        </select>
+        <select id="c" data-id="130400">
+            <option>请选择市</option>
+        </select>
+        <select id="d" data-id="130429">
+            <option>请选择区</option>
+        </select>
+    </div>
+</body>
+</html>

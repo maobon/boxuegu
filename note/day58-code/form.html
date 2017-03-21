@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="./validate/jquery-validate.js"></script>
+    <script type="text/javascript" src="./form/jquery.form.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('form').validate({
+                onKeyup: true,
+                sendForm: false,
+                valid: function () {
+                    $(this).ajaxSubmit({
+                        url: './form.php',
+                        type: 'post',
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    });
+                },
+                eachInvalidField: function () {
+                    console.log(1);
+                },
+                eachValidField: function () {
+                    console.log(2);
+                },
+                conditional: {
+                    checkPass: function () {
+                        return $(this).val() === $('#password').val();
+                    }
+                },
+                description: {
+                    repassword: {
+                        required: '请输入数据',
+                        pattern: '格式错误',
+                        conditional: '密码不一致',
+                        valid: '密码有效'
+                    },
+                    age: {
+                        required: '请输入数据',
+                        pattern: '格式错误',
+                        conditional: '',
+                        valid: '年龄有效'
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<form action="./form.php">
+    <ul>
+        <li>用户名：<input data-required type="text" name="username"></li>
+        <li>密 码：<input data-required type="password" name="password" id="password"></li>
+
+        <li>确认密码：<input
+                data-required
+                data-describedby='repassInfo'
+                data-description='repassword'
+                data-conditional='checkPass'
+                type="password" name="repassword" id="repassword">
+            <span id="repassInfo"></span>
+        </li>
+
+        <li>年龄：<input
+                data-description='age' data-describedby='ageInfo'
+                data-required data-pattern='^\d{1,3}$'
+                type="text" name="age"><span id="ageInfo"></span></li>
+
+        <li>邮箱：<input type="text" name="email"></li>
+
+        <li><input type="submit" value="提交"></li>
+    </ul>
+</form>
+</body>
+</html>

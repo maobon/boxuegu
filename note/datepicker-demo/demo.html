@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>datepicker-demo</title>
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <script>
+        $(function () {
+            // datepicker bootstrap插件
+            $("#plugin_datepicker").datepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                // endDate: '0d'
+            });
+
+            $("#btn").click(function () {
+                var date = $("#plugin_datepicker").val();
+                console.log(date);
+            });
+
+            var year = new Date().getFullYear();
+            var month = new Date().getMonth() + 1;
+            var m = month < 10 ? "0" + month : month;
+            var date = new Date().getDate();
+            var ret = year + "-" + m + "-" + date;
+
+            $("#plugin_datepicker").val(ret);
+            $("#plugin_datepicker2").val(ret);
+        });
+    </script>
+</head>
+<body>
+
+<!-- 使用js代码设定 -->
+<input type="text" id="plugin_datepicker">
+<input type="button" value="BUTTON" id="btn"><br><br>
+
+<!-- 单纯使用标签定义 -->
+<input type="text"
+       data-date-end-date="0d"
+       data-date-format='yyyy-mm-dd'
+       data-date-language='zh-CN'
+       data-provide="datepicker" id="plugin_datepicker2">
+
+</body>
+</html>

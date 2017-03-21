@@ -54,9 +54,11 @@
                 <li><a href="javascript:">讲师管理</a></li>
                 <li class="active">讲师列表</li>
             </ol>
+            <!-- 添加讲师 -->
             <div class="page-title">
-                <a href="teacher_add.html" class="btn btn-success btn-sm pull-right">添加讲师</a>
+                <a href="/teacher/teacher_add" class="btn btn-success btn-sm pull-right">添加讲师</a>
             </div>
+
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form action="" class="form-inline">
@@ -106,7 +108,7 @@
         <td>{{item.tc_roster}}</td>
         <td>{{item.tc_birthday}}</td>
         <td>
-            {{if item.tc_gender == 1}}
+            {{if item.tc_gender == 0}}
             男
             {{else}}
             女
@@ -119,8 +121,10 @@
         <td class="teacherOperation" data-tcid="{{item.tc_id}}" data-tcstatus={{item.tc_status}}>
             <!--查看教师详细信息-->
             <a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
-            <!--编辑-->
-            <a href="javascript:" class="btn btn-info btn-xs">编 辑</a>
+
+            <!-- 编辑 在a标签 href属性中传递参数给下一个页面 类似GET请求 地址栏传参 -->
+            <a href="/teacher/teacher_add?tc_id={{item.tc_id}}" class="btn btn-info btn-xs">编 辑</a>
+
             <!--注销-->
             <a href="javascript:" class="btn btn-warning btn-xs">
                 {{if item.tc_status == 0}}

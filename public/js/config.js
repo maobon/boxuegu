@@ -14,11 +14,21 @@ require.config({
         template: 'artTemplate/template',
         bootstrap: 'bootstrap/js/bootstrap',
         nprogress: 'nprogress/nprogress',
+        datepicker: 'bootstrap-datepicker/js/bootstrap-datepicker',
+        language: 'bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min',
+        validate: 'jquery-validate/jquery-validate',
+        form: 'jquery-form/jquery.form',
         utils: '../js/utils',
         overlay: '../js/overlay'
     },
     shim: {
         bootstrap: {
+            deps: ['jquery']
+        },
+        language: {
+            deps: ['jquery', 'datepicker']
+        },
+        validate: {
             deps: ['jquery']
         }
     }

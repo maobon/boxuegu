@@ -110,7 +110,7 @@ a:focus {
   float: left;
 }
 .main .header .navbar-right {
-  float: right!important;
+  float: right !important;
   margin-right: -15px;
 }
 .main .header .navbar-right li {

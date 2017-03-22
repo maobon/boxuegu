@@ -33,9 +33,9 @@ define(['jquery', 'template', 'ckeditor', 'utils', 'region', 'validate', 'form',
                 swf: '/public/assets/uploadify/uploadify.swf',
                 uploader: '/api/uploader/avatar',
                 onUploadSuccess: function (file, data) {
-                    // console.log(data);
-                    // data = JSON.parse(data);
-                    // $('.preview img').attr('src', data.result.path);
+                    // 将服务器端返回上传图片的路径 设置到img.src属性上
+                    data = JSON.parse(data);
+                    $('.preview img').attr('src', data.result.path);
                 }
             });
 

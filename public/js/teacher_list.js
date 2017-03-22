@@ -1,5 +1,6 @@
 /**
  * Created by xinbob on 3/19/17.
+ *
  * 查询教师列表
  * 使用jquery发送ajax请求 对数据使用模板引擎渲染生成html 填充页面
  * 功能点: 1.查看 2.编辑 3.注销
@@ -22,10 +23,11 @@ define(['jquery', 'template', 'utils', 'bootstrap', 'overlay'], function ($, tem
             var strHTML = template('teacherlistTpl', {list: data.result});
             $("#teacherList").html(strHTML);
 
+            // 选择器
             // $(".teacherOperation a").eq(0).click();
             // $(".teacherOperation").find('a').eq(0).click();
             // $(".teacherOperation a:eq(0)");
-            // $(".teacherOperation").find('a:eq(0)').click();
+            // $(".teacherOperation").find('a:eq(0)').click(); // 选中每个td中的第一个a标签
 
             /**
              * 查看按钮

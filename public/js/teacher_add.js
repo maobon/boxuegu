@@ -4,7 +4,7 @@
  */
 
 define(['jquery', 'utils', 'template',
-    'datepicker', 'language', 'validate', 'form'], function ($, utils, template) {
+    'datepicker', 'language', 'validate', 'form', 'overlay'], function ($, utils, template) {
 
     // 设置侧边导航菜单当前选中项
     utils.setMenuItemSelected('/teacher/teacher_list');
@@ -23,13 +23,15 @@ define(['jquery', 'utils', 'template',
             data: {tc_id: teacherId},
             dataType: 'json',
             success: function (data) {
-                data.result.tInfo = "编辑讲师";
+                if (data.code == 200) {
+                    data.result.tInfo = "编辑讲师";
 
-                var strHTML = template("teacherEditTpl", data.result);
-                $("#teacherInfo").html(strHTML);
+                    var strHTML = template("teacherEditTpl", data.result);
+                    $("#teacherInfo").html(strHTML);
 
-                // 验证并提交
-                checkFormValidate("/api/teacher/update");
+                    // 验证并提交
+                    checkFormValidate("/api/teacher/update");
+                }
             }
         });
     } else {

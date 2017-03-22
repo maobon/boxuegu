@@ -1,5 +1,6 @@
 /**
  * Created by xinbob on 3/20/17.
+ * 遮罩层
  * 页面加载时 页面呈现遮罩层 表示loading状态
  */
 

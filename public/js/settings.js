@@ -50,6 +50,36 @@ define(['jquery', 'template', 'ckeditor', 'utils', 'region', 'validate', 'form',
                     {name: 'clipboard', groups: ['clipboard', 'undo']}
                 ]
             });
+
+            // jQuery-validate plugin
+            $("#profile_form").validate({
+                sendForm: false,
+                valid: function () {
+                    // 同步更新富文本的内容变化 ckeditor api
+                    for (var instance in CKEDITOR.instances) {
+                        CKEDITOR.instances[instance].updateElement();
+                    }
+
+                    // Province + City + District
+                    var p = $("#p option:selected").text();
+                    var c = $("#c option:selected").text();
+                    var d = $("#d option:selected").text();
+                    var hometown = p + '|' + c + '|' + d;
+
+                    // submit form use with jQuery-form plugin
+                    $(this).ajaxSubmit({
+                        type: 'post',
+                        url: '/api/teacher/modify',
+                        data: {tc_hometown: hometown},
+                        dataType: 'json',
+                        success: function (data) {
+                            if (data.code == 200) {
+                                Location.href = 'index/settings';
+                            }
+                        }
+                    });
+                }
+            });
         }
     });
 

@@ -4,8 +4,10 @@
  */
 
 require.config({
-    // 此处调整根路径会影响require全局的路径
-    baseUrl: '/public/assets', // 手动设置根路径 调整根路径
+    // 此处调整根路径会影响require全局的路径 手动设置根路径 调整根路径
+    baseUrl: '/public/assets',
+    // 防止浏览器缓存 每次请求带上时间戳
+    urlArgs: 'bust=' + (new Date()).getTime(),
     paths: {
         // 省略.js jquery: 相对路径 boxuegu/public/assets/jquery/jquery.min.js
         jquery: 'jquery/jquery.min',

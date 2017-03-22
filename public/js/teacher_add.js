@@ -38,7 +38,7 @@ define(['jquery', 'utils', 'template',
         $("#teacherInfo").html(strHTML);
 
         // 验证并提交
-        checkFormValidate("/api/teacher/update");
+        checkFormValidate("/api/teacher/add");
     }
 
     /**

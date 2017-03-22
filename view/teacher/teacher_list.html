@@ -186,13 +186,14 @@
         <td colspan="3">{{tc_birthday}}</td>
     </tr>
 
+    <!-- tc_gender == 0男 1女 -->
     <tr>
         <th>性别:</th>
         <td>
             {{if tc_gender == 1}}
-            男
-            {{else}}
             女
+            {{else}}
+            男
             {{/if}}
         </td>
         <th>入职日期:</th>

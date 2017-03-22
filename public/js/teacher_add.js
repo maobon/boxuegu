@@ -6,6 +6,11 @@
 define(['jquery', 'utils', 'template',
     'datepicker', 'language', 'validate', 'form'], function ($, utils, template) {
 
+    // 设置侧边导航菜单当前选中项
+    utils.setMenuItemSelected(location.pathname);
+
+    // 从URL后面截取出字符串参数
+    // http://www.baidu.com?tc_id=1&tc_name=bob
     var teacherId = utils.queryStr('tc_id');
 
     if (teacherId) {
@@ -70,11 +75,18 @@ define(['jquery', 'utils', 'template',
                 },
                 tcPass: {
                     required: "密码不能为空",
-                    pattern: "密码只能设置为六位数字"
+                    pattern: "密码最大六位数字"
                 },
                 joinDate: {
                     required: "入职日期不能为空"
                 }
+            },
+            // eachInvalidField eachValidField 验证通过或不通过时的效果
+            eachInvalidField: function () {
+                $(this).closest('.form-group').removeClass('has-success').addClass('has-error');
+            },
+            eachValidField: function () {
+                $(this).closest('.form-group').removeClass('has-error').addClass('has-success');
             }
         });
     }

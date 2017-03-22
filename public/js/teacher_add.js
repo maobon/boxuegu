@@ -7,7 +7,7 @@ define(['jquery', 'utils', 'template',
     'datepicker', 'language', 'validate', 'form'], function ($, utils, template) {
 
     // 设置侧边导航菜单当前选中项
-    utils.setMenuItemSelected(location.pathname);
+    utils.setMenuItemSelected('/teacher/teacher_list');
 
     // 从URL后面截取出字符串参数
     // http://www.baidu.com?tc_id=1&tc_name=bob

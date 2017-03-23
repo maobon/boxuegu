@@ -17,6 +17,8 @@ define(['jquery', 'utils', 'template', 'ckeditor', 'validate', 'form'], function
         data: {cs_id: courseId},
         dataTyle: 'json',
         success: function (data) {
+            console.log(data);
+
             // 模板引擎生成页面
             var strHTML = template('courseInfoTpl', data.result);
             $("#course_info").html(strHTML);
@@ -28,6 +30,31 @@ define(['jquery', 'utils', 'template', 'ckeditor', 'validate', 'form'], function
                 ]
             });
 
+            // 父分类发生改变 就请求查询子分类
+            $("#topCategory").change(function () {
+                var $selected = $(this).find('option:selected');
+                console.log("cg_id = " + $selected.val() + " text = " + $selected.text());
+
+                // 请求查询子分类
+                $.ajax({
+                    type: 'get',
+                    url: '/api/category/child',
+                    data: {cg_id: $selected.val()},
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.code == 200) {
+                            var tpl = '{{each list as item}}<option value="{{item.cg_id}}">{{item.cg_name}}</option>{{/each}}';
+                            var render = template.compile(tpl);
+                            var strHTML = render({list: data.result});
+
+                            $("#childCategory").html(strHTML);
+                        }
+                    }
+                });
+
+            });
+
+
             // jQuery-validate plugin
             $("#course_form").validate({
                 sendForm: false,
@@ -38,14 +65,14 @@ define(['jquery', 'utils', 'template', 'ckeditor', 'validate', 'form'], function
                     }
 
                     // jQuery-form submit plugin
-                    $(this).ajaxForm({
+                    $(this).ajaxSubmit({
                         type: 'post',
                         url: '/api/course/update/basic',
                         dataType: 'json',
                         success: function (data) {
-                            if (data.code == 200) {
-                                location.href = '/course/course_add_picture?cs_id' + data.result.cs_id;
-                            }
+                            // if (data.code == 200) {
+                            //     location.href = '/course/course_add_picture?cs_id' + data.result.cs_id;
+                            // }
                         }
                     });
 

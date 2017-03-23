@@ -16,13 +16,12 @@ define(['jquery', 'utils', 'template'], function ($, utils, template) {
         data: {cs_id: courseId},
         dataType: 'json',
         success: function (data) {
-            console.log(data);
             if (data.code == 200) {
                 var strHTML = template('course_picture_tpl', data.result);
                 $("#course_picture").html(strHTML);
+
             }
         }
-
     });
 
 });

@@ -1,5 +1,4 @@
 /**
- *
  * Created by xinbob on 3/23/17.
  * 添加课程 - step1 基本信息
  */
@@ -17,8 +16,6 @@ define(['jquery', 'utils', 'template', 'ckeditor', 'validate', 'form'], function
         data: {cs_id: courseId},
         dataTyle: 'json',
         success: function (data) {
-            console.log(data);
-
             // 模板引擎生成页面
             var strHTML = template('courseInfoTpl', data.result);
             $("#course_info").html(strHTML);
@@ -70,9 +67,10 @@ define(['jquery', 'utils', 'template', 'ckeditor', 'validate', 'form'], function
                         url: '/api/course/update/basic',
                         dataType: 'json',
                         success: function (data) {
-                            // if (data.code == 200) {
-                            //     location.href = '/course/course_add_picture?cs_id' + data.result.cs_id;
-                            // }
+                            // cs_id在URL上传递 带到下一个页面
+                            if (data.code == 200) {
+                                location.href = '/course/course_add_picture?cs_id=' + data.result.cs_id;
+                            }
                         }
                     });
 

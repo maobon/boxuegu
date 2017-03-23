@@ -24,7 +24,8 @@ require.config({
         ckeditor: 'ckeditor/ckeditor',
         form: 'jquery-form/jquery.form',
         utils: '../js/utils',
-        overlay: '../js/overlay'
+        overlay: '../js/overlay',
+        jcrop:'jquery-jcrop/Jcrop'
     },
     shim: {
         bootstrap: {

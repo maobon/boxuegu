@@ -5,7 +5,7 @@
  */
 
 (function (factory) {
-    
+
     if (typeof define === 'function' && define.amd) {
         // AMD
         define(['jquery'], factory);
@@ -20,8 +20,8 @@
 }(function ($) {
 
     $.fn.region = function (options) {
-        
-        if(!options) return;
+
+        if (!options) return;
 
         var parmas = [];
 
@@ -44,7 +44,7 @@
                 dataType: 'json',
                 success: function (data) {
                     // var data = $.parseJSON(data);
-                    if(!data) return;
+                    if (!data) return;
 
                     // 将请求来的地区数据缓存到本地变量中
                     region = data;
@@ -58,7 +58,7 @@
         // 定时监听地区数据返回
         var t = setInterval(function () {
             // 数据未请求至本地
-            if(!region) return;
+            if (!region) return;
 
             // 清除定时器
             clearInterval(t);
@@ -66,7 +66,7 @@
             var options = [];
 
             // 有默认值的状态
-            for(var i=0; i<parmas.length; i++) {
+            for (var i = 0; i < parmas.length; i++) {
                 var tmp = parmas[i].split('|');
                 var o = {};
 
@@ -74,8 +74,8 @@
                 o['id'] = tmp[1];
                 o['pid'] = '000000'; // 省级
                 o['map'] = map[i];
-                
-                if(i > 0) {
+
+                if (i > 0) {
                     // 查找市/区县的父级ID
                     o['pid'] = parmas[i - 1].split('|')[1];
                 }
@@ -84,12 +84,12 @@
             }
 
             // 遍历创建
-            for(var k=0; k<options.length; k++) {
+            for (var k = 0; k < options.length; k++) {
                 var curr = options[k],
                     next = options[k + 1];
 
                 // 创建option选项
-                if(region[curr['map']] && region[curr['map']][curr['pid']]) {
+                if (region[curr['map']] && region[curr['map']][curr['pid']]) {
                     fill(curr['el'], region[curr['map']][curr['pid']], curr['id']);
                 }
 
@@ -99,14 +99,14 @@
                         var _this = $(this),
                             id = _this.val();
 
-                        if(!next) return;
+                        if (!next) return;
 
-                        if(region[next['map']]) {
+                        if (region[next['map']]) {
                             fill(next['el'], region[next['map']][id] || [], '');
                         }
 
                         $.each(options, function (key, val) {
-                            if(key > k + 1) {
+                            if (key > k + 1) {
                                 fill(val['el'], [], '');
                             }
                         });
@@ -120,7 +120,7 @@
                 var opt = '';
 
                 $.each(arr, function (key, val) {
-                    if(key == id) {
+                    if (key == id) {
                         opt += '<option value="' + key + '" selected>';
                     } else {
                         opt += '<option value="' + key + '">';
@@ -133,6 +133,6 @@
                 $('#' + el).append(opt);
             }
 
-        }, 200);  
+        }, 200);
     }
 }));

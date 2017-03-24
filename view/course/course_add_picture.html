@@ -22,6 +22,14 @@
     </div>
 </div>
 
+<!-- 隐藏域 裁剪区域坐标 保存 -->
+<form style="display: none;" id="cropForm">
+    <input type="text" name="x" id="crop_x">
+    <input type="text" name="y" id="crop_y">
+    <input type="text" name="w" id="crop_w">
+    <input type="text" name="h" id="crop_h">
+</form>
+
 <!-- 课程图片 template -->
 <script type="text/template" id="course_picture_tpl">
     <!-- 面包屑 -->
@@ -29,6 +37,7 @@
         <li><a href="javascript:;">课程管理</a></li>
         <li class="active">课程添加</li>
     </ol>
+
     <div class="steps">
         <!-- 摘要 -->
         <div class="brief">
@@ -84,10 +93,10 @@
                     可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
                 </p>
                 <div class="col-xs-2 upfile">
-                    <input type="file" id="upfile" class="btn btn-success btn-sm" value="选中图片">
+                    <input type="file" id="upfile" class="btn btn-success btn-sm" value="选中图片"/>
                 </div>
                 <div class="col-xs-2">
-                    <input id="cropPic" type="button" class="btn btn-warning btn-sm" {{ if !cs_cover_original}} disabled {{/if}} value="裁切图片">
+                    <input id="cropPic" type="button" class="btn btn-warning btn-sm" {{ if !cs_cover_original}}disabled{{/if}} value="裁切图片"/>
                 </div>
             </div>
         </div>
